@@ -1,0 +1,18 @@
+# Recipe to install BRAKER and dependencies
+# inside Singularity container.
+
+# https://github.com/Gaius-Augustus/BRAKER
+
+Bootstrap: docker
+From: ubuntu:18.04
+
+%labels
+        MAINTAINER Tom Pritchard
+
+%files
+        # need to copy the key for GeneMark-ES across.
+
+%environment
+        # set env PATHs here.
+
+%post
