@@ -9,7 +9,6 @@ and all its essential and optional dependencies.
 
 ### Mandatory Deps:
 
-- [ ] GeneMark-EX
 - [ ] Augustus
 - [ ] Bamtools
 - [ ] DIAMOND
@@ -31,6 +30,7 @@ and all its essential and optional dependencies.
 
 - [ ] Check status of `cpanm POSIX` command.
 - [ ] Check threads in Perl works okay.  Tests failed due to `locale` issues.
+- [ ] Need to `export` location of GeneMark-EX?
 
 ## Done:
 
@@ -38,7 +38,7 @@ Progress.
 
 ### Mandatory Deps:
 
-- None.
+- [x] GeneMark-EX (Tested)
 
 ### Optional Deps:
 

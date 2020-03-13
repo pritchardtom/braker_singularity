@@ -62,6 +62,18 @@ From: ubuntu:18.04
         cpanm Thread::Queue
 
 
+###############
+# GeneMark-EX:
+###############
+
+cd /opt
+wget http://topaz.gatech.edu/GeneMark/tmp/GMtool_xv6OL/gmes_linux_64.tar.gz
+wget http://topaz.gatech.edu/GeneMark/tmp/GMtool_xv6OL/gm_key_64.gz
+
+tar -zxvf gmes_linux_64.tar.gz
+gunzip gm_key_64
+cp gm_key ~/.gm_key
+
 
 #############
 # Footnotes:
