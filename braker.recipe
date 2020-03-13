@@ -10,7 +10,7 @@ From: ubuntu:18.04
         MAINTAINER Tom Pritchard
 
 %files
-        # need to copy the key for GeneMark-ES across.
+        # need to copy the key for GeneMark-EX across.
 
 %environment
         # set env PATHs here.
@@ -38,6 +38,7 @@ From: ubuntu:18.04
         apt-get install -y libsuitesparse-dev
         apt-get install -y liblpsolve55-dev
         apt-get install -y libbamtools-dev
+        apt-get install -y cdbfasta
         # apt-get install -y zlib1g-dev   -------> already comes with one above.
 
 
