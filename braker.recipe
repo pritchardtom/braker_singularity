@@ -1,7 +1,7 @@
 # Recipe to install BRAKER and dependencies
 # inside Singularity container.
-
-# https://github.com/Gaius-Augustus/BRAKER
+#
+#       - https://github.com/Gaius-Augustus/BRAKER
 
 Bootstrap: docker
 From: ubuntu:18.04
@@ -16,3 +16,64 @@ From: ubuntu:18.04
         # set env PATHs here.
 
 %post
+
+        export LC_ALL="en_GB.UTF-8"
+        export PERL_MM_USE_DEFAULT=1       # do I need this if using cpanm?
+
+        apt-get -y update
+        apt-get install -y build-essential
+        apt-get install -y cmake
+        apt-get install -y python3.6
+        apt-get install -y python3-pip
+        apt-get install -y wget
+        apt-get install -y git
+        apt-get install -y autoconf
+        apt-get install -y cpanminus
+        apt-get install -y libsqlite3-dev
+        apt-get install -y libmysql++-dev
+        apt-get install -y libboost-iostreams-dev
+        apt-get install -y libgsl-dev
+        apt-get install -y libboost-dev
+        apt-get install -y libboost-all-dev
+        apt-get install -y libsuitesparse-dev
+        apt-get install -y liblpsolve55-dev
+        apt-get install -y libbamtools-dev
+        # apt-get install -y zlib1g-dev   -------> already comes with one above.
+
+
+####################
+# BRAKER Perl Deps:
+####################
+
+
+        cpanm File::Spec::Functions
+        cpanm Hash::Merge
+        cpanm List::Util
+        cpanm Logger::Simple
+        cpanm Module::Load::Conditional
+        cpanm --force Parallel::ForkManager # See [1] below for details.
+        # cpanm POSIX
+        cpanm Scalar::Util::Numeric
+        cpanm --force YAML                  # See [2] below for details.
+        cpanm Math::Utils
+        cpanm MCE::Mutex
+        cpanm --force threads               # See [3] below for details.
+        cpanm Thread::Queue
+
+
+
+#############
+# Footnotes:
+#############
+
+
+# [1] A dependency for Parallel::ForkManager (Test::Warn) kept failing during
+#     testing, hence the --force.  Test::Warn successfully built as a result.
+
+
+# [2] A dependency for YAML (Test::Base) kept failing during testing, hence
+#     the --force.  Test::Base successfully built as a result.
+
+
+# [3] threads kept failing tests due to locale warnings.  Will need to check
+#     this issue in final build during testing.
